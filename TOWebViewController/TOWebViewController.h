@@ -154,4 +154,11 @@
  */
 @property (nonatomic,assign)    CGFloat buttonBevelOpacity;
 
+/**
+ Use system network activity indicator in status bar while loading pages
+
+ Default value is NO.
+ */
+@property (nonatomic,assign)    BOOL useSystemNetworkActivityIndicator;
+
 @end

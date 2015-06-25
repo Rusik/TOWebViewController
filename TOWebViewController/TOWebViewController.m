@@ -513,7 +513,7 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    if (self.useSystemNetworkActivityIndicator) [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 }
 
 - (BOOL)shouldAutorotate
@@ -1072,7 +1072,7 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
         [self setLoadingProgress:kInitialProgressValue];
         
         //show that loading started in the status bar
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+        if (self.useSystemNetworkActivityIndicator) [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
         
         //set the title to the URL until we load the page properly
         if (self.showPageTitles && self.showUrlWhileLoading) {
@@ -1212,11 +1212,11 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
         [self.forwardButton setEnabled:NO];
     
     if (self.webView.isLoading) {
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+        if (self.useSystemNetworkActivityIndicator) [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
         [self.reloadStopButton setImage:self.stopIcon forState:UIControlStateNormal];
     }
     else {
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        if (self.useSystemNetworkActivityIndicator) [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         [self.reloadStopButton setImage:self.reloadIcon forState:UIControlStateNormal];
     }
 }
